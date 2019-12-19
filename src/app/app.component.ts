@@ -19,10 +19,12 @@ export class AppComponent {
     {
       title: 'Profile',
       url: '/profile',
+      icon:'person'
     },
     {
       title: 'Logout',
       url: '/dashboard',
+      icon:'log-out'
     }
   ];
   constructor(
