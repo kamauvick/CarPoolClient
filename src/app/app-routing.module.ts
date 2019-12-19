@@ -24,6 +24,10 @@ const routes: Routes = [
     path: 'trip',
     loadChildren: () => import('./trip/trip.module').then( m => m.TripPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
 ];
 
 @NgModule({
