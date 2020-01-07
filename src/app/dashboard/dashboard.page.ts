@@ -1,5 +1,7 @@
-import { AfterViewInit,Component, OnInit, ViewChild,ElementRef } from '@angular/core';
+import { AfterViewInit,Component, OnInit, ViewChild,ElementRef,NgZone } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { MapsAPILoader } from '@agm/core';
+import { DrawerState } from 'ion-bottom-drawer'
 
 declare var google;
 
@@ -9,6 +11,7 @@ declare var google;
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit,AfterViewInit {
+  drawerState = DrawerState.Docked;
  
   @ViewChild('mapElement', {static: true}) mapNativeElement:ElementRef;
   //to implement google map direction services into our application
@@ -19,8 +22,10 @@ export class DashboardPage implements OnInit,AfterViewInit {
   directionForm: FormGroup;
 
 
-  constructor(private fb: FormBuilder ) {
-    this.createRouteForm();
+  constructor(private fb: FormBuilder){
+  
+     this.createRouteForm();
+
    }
 
   ngOnInit() {}
@@ -31,6 +36,7 @@ export class DashboardPage implements OnInit,AfterViewInit {
       destination: ['', Validators.required]
     });
   }
+
 
   ngAfterViewInit(): void {
     const map = new google.maps.Map(this.mapNativeElement.nativeElement, {
