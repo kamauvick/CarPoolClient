@@ -8,6 +8,7 @@ import { OfferRidePageRoutingModule } from './offer-ride-routing.module';
 
 import { OfferRidePage } from './offer-ride.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
