@@ -34,6 +34,7 @@
     "hammerjs": "^2.0.8",
     "ion-bottom-drawer": "^2.0.0",
     "ion-floating-menu": "^1.0.6",
+    "ionic-calendar-date-picker": "^0.1.2",
     "rxjs": "^6.5.4",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

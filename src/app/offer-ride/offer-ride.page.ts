@@ -10,6 +10,9 @@ export class OfferRidePage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
+  }  
+  
+ 
+
 
 }
