@@ -1,7 +1,8 @@
 import { AfterViewInit,Component, OnInit, ViewChild,ElementRef,NgZone } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
-import { DrawerState } from 'ion-bottom-drawer'
+import { DrawerState } from 'ion-bottom-drawer';
+import {Router, ActivatedRoute} from '@angular/router';
 
 declare var google;
 
@@ -12,7 +13,8 @@ declare var google;
 })
 export class DashboardPage implements OnInit,AfterViewInit {
   drawerState = DrawerState.Docked;
- 
+  destinationReceived : String;
+  sourceReceived : String;
   @ViewChild('mapElement', {static: true}) mapNativeElement:ElementRef;
   //to implement google map direction services into our application
   directionsService = new google.maps.DirectionsService;
@@ -22,20 +24,33 @@ export class DashboardPage implements OnInit,AfterViewInit {
   directionForm: FormGroup;
 
 
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder, public activatedRoute: ActivatedRoute, public router : Router){
   
-     this.createRouteForm();
+    //  this.createRouteForm();
 
    }
 
-  ngOnInit() {}
-
-  createRouteForm(){
-    this.directionForm = this.fb.group({
-      source: ['', Validators.required],
-      destination: ['', Validators.required]
-    });
+  ngOnInit() {
+    this.pickSourceDestination();
+    
   }
+
+  pickSourceDestination=()=>{
+    this.activatedRoute.queryParams.subscribe((data)=>{
+      let receivedUserInput = Object.values(data)
+      this.destinationReceived = receivedUserInput[0]
+      console.log(this.destinationReceived)
+      
+      this.sourceReceived = receivedUserInput[1]
+      this.calculateAndDisplayRoute();
+    })
+  }
+  // createRouteForm(){
+  //   this.directionForm = this.fb.group({
+  //     source: ['', Validators.required],
+  //     destination: ['', Validators.required]
+  //   });
+  // }
 
 
   ngAfterViewInit(): void {
@@ -45,13 +60,13 @@ export class DashboardPage implements OnInit,AfterViewInit {
       center: {lat: 41.85, lng: -87.65}
     })
     this.directionsDisplay.setMap(map);
+    
   }
-
-  calculateAndDisplayRoute(formValues) {
+  calculateAndDisplayRoute() {
     const that = this;
     this.directionsService.route({
-      origin: formValues.source,
-      destination: formValues.destination,
+      origin: this.sourceReceived,
+      destination: this.destinationReceived,
       travelMode: 'DRIVING'
     }, (response, status) =>{
       if (status === 'OK') {
@@ -61,6 +76,7 @@ export class DashboardPage implements OnInit,AfterViewInit {
       }
     });
   }
+  
 
    
 
