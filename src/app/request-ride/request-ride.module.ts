@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { RequestRidePageRoutingModule } from './request-ride-routing.module';
 
 import { RequestRidePage } from './request-ride.page';
-
+import { NavController } from 'ionic-angular';
+import { DashboardPage } from '../dashboard/dashboard.page';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,4 +18,13 @@ import { RequestRidePage } from './request-ride.page';
   ],
   declarations: [RequestRidePage]
 })
-export class RequestRidePageModule {}
+
+
+export class RequestRidePageModule {
+private destination ;
+private source;
+constructor(public navCtl :NavController){
+
+  
+}
+}
