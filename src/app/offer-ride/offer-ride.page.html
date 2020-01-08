@@ -3,11 +3,11 @@
 <form>
   <ion-item>
     <ion-label position="floating">Source</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="source"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Destination</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]= "destination"></ion-input>
   </ion-item>
   <ion-button expand="full" type="submit" >Get Direction</ion-button>
 </form>
