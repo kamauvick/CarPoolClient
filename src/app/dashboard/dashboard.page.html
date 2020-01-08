@@ -20,16 +20,22 @@
 </ion-content>
 <ion-bottom-drawer [(state)]="drawerState" [minimumHeight]="20" [dockedHeight]="230" [shouldBounce]="true"
   [distanceTop]="0" ><i class="icon ion-arrow-up-b"></i>	
-  <ion-tabs>
-    <ion-tab-bar slot="top">
-      <ion-tab-button tab="request-ride">
-        <ion-label>Request Ride</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="offer-ride">
-        <ion-label>Offer Ride</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+  
+  <div class="drawer-content">
+
+    <div id="content">
+      <ion-tabs>
+        <ion-tab-bar slot="top">
+          <ion-tab-button tab="request-ride">
+            <ion-label>Request Ride</ion-label>
+          </ion-tab-button>
+          <ion-tab-button tab="offer-ride">
+            <ion-label>Offer Ride</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+    </div>
+  </div>
   <!-- <div class="drawer-content">
 
     <form [formGroup]="directionForm" (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">

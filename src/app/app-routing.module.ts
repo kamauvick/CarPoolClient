@@ -28,14 +28,14 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
-  {
-    path: 'request-ride',
-    loadChildren: () => import('./request-ride/request-ride.module').then( m => m.RequestRidePageModule)
-  },
-  {
-    path: 'offer-ride',
-    loadChildren: () => import('./offer-ride/offer-ride.module').then( m => m.OfferRidePageModule)
-  },
+  // {
+  //   path: 'request-ride',
+  //   loadChildren: () => import('./request-ride/request-ride.module').then( m => m.RequestRidePageModule)
+  // },
+  // {
+  //   path: 'offer-ride',
+  //   loadChildren: () => import('./offer-ride/offer-ride.module').then( m => m.OfferRidePageModule)
+  // },
 ];
 
 @NgModule({

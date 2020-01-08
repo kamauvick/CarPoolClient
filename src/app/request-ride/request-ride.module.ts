@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-
+;
 import { RequestRidePageRoutingModule } from './request-ride-routing.module';
 
 import { RequestRidePage } from './request-ride.page';
@@ -17,4 +17,15 @@ import { RequestRidePage } from './request-ride.page';
   ],
   declarations: [RequestRidePage]
 })
-export class RequestRidePageModule {}
+
+
+export class RequestRidePageModule {
+
+constructor(){
+
+ 
+
+ 
+  
+}
+}
