@@ -1,0 +1,18 @@
+form {
+    // margin-bottom: 0!important;
+
+    ion-item {
+        --border-color: transparent!important;
+        --highlight-height: 0;
+        --background: none;
+        background: rgba(var(--ion-color-primary-rgb), 0.06);
+        border-radius: 4px;
+        ion-input {
+            border: 1px solid #009FDA;
+            border-radius: 8px;
+            --color: #000;
+            font-size: 16px;
+            --padding-start: 10px;
+        }
+    }
+}
