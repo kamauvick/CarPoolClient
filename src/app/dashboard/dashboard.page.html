@@ -1,16 +1,19 @@
-<ion-header >
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Dashboard
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+  <ion-fab class = "menu" slot="start">
+    <ion-menu-button  >
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+  </ion-fab>
+  <ion-fab class= "notification" vertical="top" horizontal="end" slot="fixed">
+    
+      <ion-icon color="primary" name="notifications"></ion-icon>
+    
+  </ion-fab>
 </ion-header>
 
 
 <ion-content>
+  
   
 
   <div #mapElement class="map"></div>
