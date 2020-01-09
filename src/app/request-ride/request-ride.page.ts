@@ -9,7 +9,7 @@ import { DashboardPage } from '../dashboard/dashboard.page';
 })
 
 export class RequestRidePage implements OnInit {
-  userInput = {'destination':'Limuru','source':'Nairobi'}
+  userInput = {'destination':'','source':''}
   constructor(public router : Router) { }
       
   ngOnInit() {
