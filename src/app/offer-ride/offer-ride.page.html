@@ -1,13 +1,14 @@
 <ion-content>
   <!-- <h1>offer-ride</h1> -->
-<form>
+
+<form (ngSubmit)="goToDashboard()">
   <ion-item margin>
     <!-- <ion-label position="floating">Source</ion-label> -->
-    <ion-input  placeholder="Where from?"></ion-input>
+    <ion-input [(ngModel)]="userInput.source" name = "source" placeholder="Where from?"></ion-input>
   </ion-item>
   <ion-item margin>
     <!-- <ion-label position="floating">Destination</ion-label> -->
-    <ion-input  placeholder="Where to?"></ion-input>
+    <ion-input  [(ngModel)]= "userInput.destination" name = 'destination' placeholder="Where to?"></ion-input>
   </ion-item >
   <ion-item margin lines="none">
     <ion-label>Select date & time</ion-label >
@@ -31,8 +32,6 @@
       <ion-label>2</ion-label>
     </ion-item>
   </ion-radio-group>
-  
-
-  
+  <ion-button expand="full" type="submit" >Offer Ride</ion-button>
 </form>
 </ion-content>
