@@ -2,6 +2,6 @@
 	<img  id="confirmImage" src="../assets/images/onboard.png">
 <h1 class="logintext"><b>Welcome username,</b></h1>
 <p class="logintext">Please enter the verification code to start carpooling</p>
-	<ion-input placeholder="Enter code" type="text|number" name="code" id="code" class="logintext" aria-required="text|number"></ion-input>
+	<ion-input placeholder="Enter code" type="text|number" name="code" id="code" class="logintext" [(ngModel)]= "userVerificationCode.password" aria-required="text|number"></ion-input>
 		<ion-button type="submit" color="primary" (click)="loginUser()" >Start carpooling!</ion-button>
 </ion-content>

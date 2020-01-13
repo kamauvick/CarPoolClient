@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SigninService } from 'app/services/signin.service';
+import { Password } from '../password';
 
 @Component({
   selector: 'app-confirm',
@@ -9,11 +10,11 @@ import { SigninService } from 'app/services/signin.service';
 export class ConfirmPage implements OnInit {
 
 constructor(private signinService: SigninService) { }
-userVerificationCode = {};
+userVerificationCode = {} as Password;
   ngOnInit() {
   }
 loginUser() {
-this.signinService.getUserToken(this.userVerificationCode);
+this.signinService.getUserToken(this.userVerificationCode.password);
 }
 
 }
