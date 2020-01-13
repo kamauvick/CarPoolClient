@@ -1,9 +1,10 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>sign</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content class="loginpage">
+	<img src = "../assets/images/carpool1.png">
+	<div>
+	<h1 class="logintext"><b>Welcome</b></h1>
+	<p class="logintext" id="welcomeText">Manage your carpool ride seamlessly <br> and intuitively.Accept the <a href="" class="rules">Terms and<br> Conditions</a> and login using your<br> company email.</p>
+	<ion-input placeholder="Enter email" type="email" name="email" id="email" class="logintext" [(ngModel)]="userInput.email" aria-required="email"></ion-input>
+	<ion-radio></ion-radio><span  class="logintext">I agree to the terms and condtions.</span>
+	<ion-button type="submit" (click)="getUser()" >Sign Up</ion-button>
+	</div>
 </ion-content>
