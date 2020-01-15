@@ -40,6 +40,7 @@ const loginData = {
 console.log(loginData);
 return this.http.post(this.loginUrl, loginData, this.httpOptions).subscribe((data) => {
 console.log(data);
+localStorage.setItem('userToken', data['key']);
 console.log('Got user token');
 });
 
