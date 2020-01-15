@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import {Router} from '@angular/router';
-import { DashboardPage } from '../dashboard/dashboard.page';
+import { RequestNewRideService } from '../services/request-new-ride.service';
+import { DemandClass } from '../classes/demand-class';
+
 @Component({
   selector: 'app-request-ride',
   templateUrl: './request-ride.page.html',
@@ -9,13 +10,22 @@ import { DashboardPage } from '../dashboard/dashboard.page';
 })
 
 export class RequestRidePage implements OnInit {
-  userInput = {'destination':'','source':''}
-  constructor(public router : Router) { }
+ 
+  userInput: DemandClass
+
+  constructor(public router : Router,
+    public requestNewRideService : RequestNewRideService) 
+    { 
+      this.userInput = new DemandClass()
+    }
       
   ngOnInit() {
   }
- goToDashboard=()=>{
-  
-   this.router.navigate(['/dashboard'],{queryParams:{destination:this.userInput.destination,source:this.userInput.source}})
- }
+ submitNewRideData=()=>{
+
+  this.requestNewRideService.postNewRequestedRide(this.userInput).subscribe((response)=>{
+     //navigate to dashboard while sending source and destination values from form to dashboard
+   this.router.navigate(['/dashboard'],{queryParams:{destination:this.userInput.destination,source:this.userInput.origin}})
+  })
+  }
 }
