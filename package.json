@@ -28,13 +28,8 @@
     "@ionic/angular": "^4.7.1",
     "@types/googlemaps": "^3.39.0",
     "@types/hammerjs": "^2.0.36",
-<<<<<<< HEAD
-    "cordova-android": "^8.1.0",
-    "cordova-browser": "6.0.0",
-    "cordova-plugin-geolocation": "^4.0.2",
-=======
+
     "cordova-browser": "^6.0.0",
->>>>>>> 5ac266bfec40ef2322a49c23be816195e9fe7012
     "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
     "cordova-plugin-nativegeocoder": "^3.2.2",
     "core-js": "^2.5.4",
@@ -87,25 +82,9 @@
         "API_KEY_FOR_ANDROID": "YOUR_ANDROID_API_KEY_IS_HERE",
         "API_KEY_FOR_IOS": "YOUR_IOS_API_KEY_IS_HERE"
       },
-<<<<<<< HEAD
-      "cordova-plugin-nativegeocoder": {},
-      "cordova-plugin-geolocation": {},
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-statusbar": {},
-      "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {
-        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
-      },
-      "cordova-plugin-ionic-keyboard": {}
-    },
-    "platforms": [
-      "android",
-      "browser"
-    ]
-=======
+
       "cordova-plugin-nativegeocoder": {}
     }
->>>>>>> 5ac266bfec40ef2322a49c23be816195e9fe7012
+
   }
 }
