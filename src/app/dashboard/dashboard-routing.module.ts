@@ -9,18 +9,28 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: DashboardPage,
-    children:[
+    children: [
       {
-      path:"offer-ride",
-      loadChildren: "../offer-ride/offer-ride.module#OfferRidePageModule"
+        path: 'offer-ride',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../offer-ride/offer-ride.module').then( m => m.OfferRidePageModule)
+          }
+        ]
       },
       {
-        path: "request-ride",
-        loadChildren:"../request-ride/request-ride.module#RequestRidePageModule"
+        path: 'request-ride',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../request-ride/request-ride.module').then( m => m.RequestRidePageModule)
+          }
+        ]
       }
-    ]
+  ]
   }
 ];
 
