@@ -26,10 +26,12 @@
     <div id="content">
       <ion-tabs>
         <ion-tab-bar slot="top">
-          <ion-tab-button tab="request-ride">
-            <ion-label>Request Ride</ion-label>
+          <ion-tab-button (click) = scrollUpEvent() tab="request-ride">
+            <ion-label>
+              <ion-icon name="arrow-up"></ion-icon>
+              Request Ride</ion-label>
           </ion-tab-button>
-          <ion-tab-button tab="offer-ride">
+          <ion-tab-button (click) = scrollUpEvent() tab="offer-ride">
             <ion-label>Offer Ride</ion-label>
           </ion-tab-button>
         </ion-tab-bar>

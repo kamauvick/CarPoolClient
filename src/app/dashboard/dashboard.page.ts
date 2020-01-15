@@ -1,10 +1,17 @@
 import { AfterViewInit,Component, OnInit, ViewChild,ElementRef,NgZone } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
-import { MapsAPILoader } from '@agm/core';
 import { DrawerState } from 'ion-bottom-drawer';
 import {Router, ActivatedRoute} from '@angular/router';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+
+
+
 
 declare var google;
+let options: NativeGeocoderOptions = {
+  useLocale: true,
+  maxResults: 5
+};
 
 @Component({
   selector: 'app-dashboard',
@@ -12,19 +19,27 @@ declare var google;
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit,AfterViewInit {
+
+ 
+
   drawerState = DrawerState.Docked;
-  destinationReceived : String;
-  sourceReceived : String;
+  destinationReceived : string;
+  sourceReceived : string;
+  destinationLatLong : Number;
+  
   @ViewChild('mapElement', {static: true}) mapNativeElement:ElementRef;
   //to implement google map direction services into our application
   directionsService = new google.maps.DirectionsService;
 
   //to render the direction path into our application
   directionsDisplay = new google.maps.DirectionsRenderer;
-  directionForm: FormGroup;
+  
 
 
-  constructor(private fb: FormBuilder, public activatedRoute: ActivatedRoute, public router : Router){
+  constructor(private fb: FormBuilder,
+     public activatedRoute: ActivatedRoute, 
+     public router : Router,
+     private nativeGeocoder: NativeGeocoder){
   
     //  this.createRouteForm();
 
@@ -32,9 +47,16 @@ export class DashboardPage implements OnInit,AfterViewInit {
 
   ngOnInit() {
     this.pickSourceDestination();
+   
     
   }
 
+  convertAddressToLatLong=()=>{
+    console.log("Got it!!")
+      this.nativeGeocoder.forwardGeocode(this.sourceReceived, options)
+     .then((result: NativeGeocoderResult[]) => console.log('The coordinates are latitude=' + result[0].latitude + ' and longitude=' + result[0].longitude))
+     .catch((error: any) => console.log(error));
+  }
   pickSourceDestination=()=>{
     this.activatedRoute.queryParams.subscribe((data)=>{
       let receivedUserInput = Object.values(data)
@@ -42,15 +64,16 @@ export class DashboardPage implements OnInit,AfterViewInit {
       console.log(this.destinationReceived)
       
       this.sourceReceived = receivedUserInput[1]
+      this.convertAddressToLatLong();
       this.calculateAndDisplayRoute();
+      this.drawerState = DrawerState.Docked;
     })
   }
-  // createRouteForm(){
-  //   this.directionForm = this.fb.group({
-  //     source: ['', Validators.required],
-  //     destination: ['', Validators.required]
-  //   });
-  // }
+
+  scrollUpEvent(){
+    this.drawerState= DrawerState.Top
+  }
+ 
 
 
   ngAfterViewInit(): void {
@@ -62,6 +85,7 @@ export class DashboardPage implements OnInit,AfterViewInit {
     this.directionsDisplay.setMap(map);
     
   }
+
   calculateAndDisplayRoute() {
     const that = this;
     this.directionsService.route({
@@ -71,13 +95,12 @@ export class DashboardPage implements OnInit,AfterViewInit {
     }, (response, status) =>{
       if (status === 'OK') {
         that.directionsDisplay.setDirections(response);
+        console.log(response);
       } else {
         window.alert('Directions request failed due to ' + status);
       }
     });
+    
   }
-  
-
-   
 
 }

@@ -9,6 +9,9 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+
 import 'hammerjs';
 
 const routes: Routes = [
@@ -29,6 +32,7 @@ const routes: Routes = [
     ReactiveFormsModule
   ],
   declarations: [DashboardPage],
+  providers: [Geolocation,NativeGeocoder]
   
 })
 export class DashboardPageModule {}
