@@ -51,12 +51,6 @@ export class DashboardPage implements OnInit,AfterViewInit {
     
   }
 
-  convertAddressToLatLong=()=>{
-    console.log("Got it!!")
-      this.nativeGeocoder.forwardGeocode(this.sourceReceived, options)
-     .then((result: NativeGeocoderResult[]) => console.log('The coordinates are latitude=' + result[0].latitude + ' and longitude=' + result[0].longitude))
-     .catch((error: any) => console.log(error));
-  }
   pickSourceDestination=()=>{
     this.activatedRoute.queryParams.subscribe((data)=>{
       let receivedUserInput = Object.values(data)
@@ -64,7 +58,7 @@ export class DashboardPage implements OnInit,AfterViewInit {
       console.log(this.destinationReceived)
       
       this.sourceReceived = receivedUserInput[1]
-      this.convertAddressToLatLong();
+      //this.convertAddressToLatLong();
       this.calculateAndDisplayRoute();
       this.drawerState = DrawerState.Docked;
     })
@@ -97,7 +91,7 @@ export class DashboardPage implements OnInit,AfterViewInit {
         that.directionsDisplay.setDirections(response);
         console.log(response);
       } else {
-        window.alert('Directions request failed due to ' + status);
+        console.log('Directions request failed due to ' + status);
       }
     });
     
